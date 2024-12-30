@@ -1,0 +1,29 @@
+{
+  "name": "Nguyễn Thị Lee Naa",
+  "ID": "100069851568573",
+  "mainROD": "Titanium Harpoon",
+  "GPS": {
+    "locate": null,
+    "area": null
+  },
+  "fishBag": [
+    {
+      "ID": 0,
+      "name": "Cá Thách Đấu",
+      "category": "Legendary",
+      "size": 999999,
+      "sell": 0
+    }
+  ],
+  "item": [
+    {
+      "name": "Titanium Harpoon",
+      "price": 4000,
+      "durability": 100,
+      "countdown": 150,
+      "countdownData": null,
+      "image": "https://i.imgur.com/vgIeC3t.jpg"
+    }
+  ],
+  "timeRegister": "00:07:29, 21/5/2023"
+}

@@ -1,0 +1,61 @@
+{
+  "name": "Đỗ Anh Duy",
+  "ID": "100037140780211",
+  "mainROD": "Cúp Netherite",
+  "GPS": {
+    "locate": "Nether And The End",
+    "area": "Pháo Đài Nether"
+  },
+  "fishBag": [
+    {
+      "ID": 0,
+      "name": "Bedrock",
+      "category": "Legendary",
+      "size": 999999,
+      "sell": 0
+    },
+    {
+      "ID": 1,
+      "name": "Nether Quartz Ore",
+      "category": "Uncommon",
+      "size": 120,
+      "sell": 990,
+      "image": "https://i.imgur.com/2lk1JeN.png"
+    },
+    {
+      "ID": 2,
+      "name": "Gạch Nether Thẫm",
+      "category": "Common",
+      "size": 32,
+      "sell": 200,
+      "image": "https://i.imgur.com/hmpZFNN.png"
+    },
+    {
+      "ID": 3,
+      "name": "Mảnh Vỡ Cổ Đại",
+      "category": "Legendary",
+      "size": 27,
+      "sell": 1900,
+      "image": "https://i.imgur.com/JJwen49.png"
+    },
+    {
+      "ID": 4,
+      "name": "Gạch Nether Thẫm",
+      "category": "Common",
+      "size": 32,
+      "sell": 200,
+      "image": "https://i.imgur.com/hmpZFNN.png"
+    }
+  ],
+  "item": [
+    {
+      "name": "Cúp Netherite",
+      "price": 29000,
+      "durability": 820,
+      "countdown": 3,
+      "countdownData": 1692546713999,
+      "image": "https://i.imgur.com/k1skyAb.png"
+    }
+  ],
+  "timeRegister": "20:49:01, 8/9/2022"
+}

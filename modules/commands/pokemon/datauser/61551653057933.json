@@ -1,0 +1,171 @@
+{
+  "name": "River Sen",
+  "ID": "61551653057933",
+  "pet": [
+    {
+      "name": "Arceus",
+      "type": "Normal",
+      "HP": "168.0",
+      "Attack": "168.0",
+      "Defense": "168.0",
+      "Speed": "168.0",
+      "coins": "57600.0",
+      "skill": [
+        "Multitype"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/493.png"
+    },
+    {
+      "name": "Giratina",
+      "type": "Ghost",
+      "HP": 150,
+      "Attack": 100,
+      "Defense": 120,
+      "Speed": 90,
+      "coins": 46000,
+      "skill": [
+        "Pressure",
+        "Telepathy"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/487.png"
+    },
+    {
+      "name": "Lugia",
+      "type": "Psychic",
+      "HP": 106,
+      "Attack": 90,
+      "Defense": 130,
+      "Speed": 110,
+      "coins": 43600,
+      "skill": [
+        "Pressure",
+        "Multiscale"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/249.png"
+    },
+    {
+      "name": "Kyurem",
+      "type": "Dragon",
+      "HP": 125,
+      "Attack": 130,
+      "Defense": 90,
+      "Speed": 95,
+      "coins": 44000,
+      "skill": [
+        "Pressure"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/646.png"
+    },
+    {
+      "name": "Zekrom",
+      "type": "Dragon",
+      "HP": 100,
+      "Attack": 150,
+      "Defense": 120,
+      "Speed": 90,
+      "coins": 46000,
+      "skill": [
+        "Teravolt"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/644.png"
+    },
+    {
+      "name": "Rayquaza",
+      "type": "Dragon",
+      "HP": 105,
+      "Attack": 150,
+      "Defense": 90,
+      "Speed": 95,
+      "coins": 44000,
+      "skill": [
+        "Air Lock"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/384.png"
+    },
+    {
+      "name": "Palkia",
+      "type": "Water",
+      "HP": 90,
+      "Attack": 120,
+      "Defense": 100,
+      "Speed": 100,
+      "coins": 41000,
+      "skill": [
+        "Pressure",
+        "Telepathy"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/484.png"
+    },
+    {
+      "name": "Yveltal",
+      "type": "Dark",
+      "HP": 132.3,
+      "Attack": 137.55,
+      "Defense": 99.75,
+      "Speed": 103.95,
+      "coins": 47355,
+      "skill": [
+        "Dark Aura"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/717.png"
+    },
+    {
+      "name": "Xerneas",
+      "type": "Fairy",
+      "HP": 126,
+      "Attack": 131,
+      "Defense": 95,
+      "Speed": 99,
+      "coins": 45100,
+      "skill": [
+        "Fairy Aura"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/716.png"
+    },
+    {
+      "name": "Zygarde",
+      "type": "Dragon",
+      "HP": 108,
+      "Attack": 100,
+      "Defense": 121,
+      "Speed": 95,
+      "coins": 42400,
+      "skill": [
+        "Aura Break"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/718.png"
+    },
+    {
+      "name": "Solgaleo",
+      "type": "Psychic",
+      "HP": 137,
+      "Attack": 137,
+      "Defense": 107,
+      "Speed": 97,
+      "coins": 47800,
+      "skill": [
+        "Full Metal Body"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/791.png"
+    },
+    {
+      "name": "Lunala",
+      "type": "Psychic",
+      "HP": 137,
+      "Attack": 113,
+      "Defense": 89,
+      "Speed": 97,
+      "coins": 43600,
+      "skill": [
+        "Shadow Shield"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/792.png"
+    }
+  ],
+  "foods": [],
+  "solo": {
+    "win": 1,
+    "lose": 0,
+    "draw": 1
+  }
+}

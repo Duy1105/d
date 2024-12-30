@@ -1,0 +1,83 @@
+{
+  "name": "Đỗ Duy",
+  "ID": "100037140780211",
+  "pet": [
+    {
+      "name": "Sobble",
+      "type": "Water",
+      "HP": "75.020",
+      "Attack": "60.020",
+      "Defense": "60.020",
+      "Speed": "105.020",
+      "skill": [
+        "Torrent",
+        "Sniper"
+      ],
+      "coins": 22500,
+      "images": "https://raw.githubusercontent.com/TuanDeepTry-14072003/pokemon-data.json/master/images/pokedex/hires/816.png"
+    },
+    {
+      "name": "Rookidee",
+      "type": "Flying",
+      "HP": "38.0",
+      "Attack": "47.0",
+      "Defense": "35.0",
+      "Speed": "57.0",
+      "skill": [
+        "Keen-eye",
+        "Unnerve",
+        "Big-pecks"
+      ],
+      "coins": 10000,
+      "images": "https://raw.githubusercontent.com/TuanDeepTry-14072003/pokemon-data.json/master/images/pokedex/hires/821.png"
+    },
+    {
+      "name": "Heatran",
+      "type": "Fire",
+      "HP": "136.526.0",
+      "Attack": "135.026.0",
+      "Defense": "159.026.0",
+      "Speed": "115.526.0",
+      "skill": [
+        "Flash Fire",
+        "Flame Body"
+      ],
+      "coins": 25000,
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/485.png"
+    },
+    {
+      "name": "Cranidos",
+      "type": "Rock",
+      "HP": "33.5",
+      "Attack": "62.5",
+      "Defense": "20.0",
+      "Speed": "29.0",
+      "skill": [
+        "Mold Breaker",
+        "Sheer Force"
+      ],
+      "coins": 5000,
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/408.png"
+    },
+    {
+      "name": "Samurott",
+      "type": "Water",
+      "HP": "142.5",
+      "Attack": "150.0",
+      "Defense": "127.5",
+      "Speed": "105.0",
+      "skill": [
+        "Torrent",
+        "Shell Armor"
+      ],
+      "coins": 20000,
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/503.png"
+    }
+  ],
+  "foods": [],
+  "solo": {
+    "win": 0,
+    "lose": 0,
+    "draw": 0
+  }
+}

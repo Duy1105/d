@@ -1,0 +1,18 @@
+{
+    "name": "Đỗ Anh Duy",
+    "ID": "100037140780211",
+    "shield": 3,
+    "coins": 26000,
+    "Island": {
+        "level": 1,
+        "coinsLV": 200,
+        "data": {
+            "tower": 0,
+            "tree": 0,
+            "pool": 0,
+            "pet": 0
+        }
+    },
+    "spin": 19,
+    "timeRegister": "16:31:34, 7/7/2022"
+}

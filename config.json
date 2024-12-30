@@ -1,0 +1,121 @@
+{
+    "language": "vi",
+    "DeveloperMode": false,
+    "autoCreateDB": true,
+    "notiGroup": false,
+    "iconUnsend": {
+        "status": true,
+        "icon": "😠"
+    },
+    "ndhOnly": false,
+    "adminOnly": false,
+    "NOTIFICATION": false,
+    "allowInbox": false,
+    "adminPaseOnly": false,
+    "duyetbox": true,
+    "commandDisabled": [],
+    "eventDisabled": [],
+    "EMAIL": "",
+    "PASSWORD": "",
+    "OTPKEY": "",
+    "BOTNAME": "𝔹𝕠𝕥 𝔻𝕠 𝔸𝕟𝕙 𝔻𝕦𝕪",
+    "PREFIX": "🐧",
+    "ADMINBOT": [
+        "100037140780211",
+        "100053923566514"
+    ],
+    "NDH": [],
+    "DATABASE": {
+        "sqlite": {
+            "storage": "data.sqlite"
+        }
+    },
+    "APPSTATEPATH": "appstate.json",
+    "FCAOption": {
+        "forceLogin": true,
+        "listenEvents": true,
+        "pauseLog": true,
+        "logLevel": "error",
+        "selfListen": true,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Safari/537.36"
+    },
+    "autoCleanCache": {
+        "Enable": true,
+        "CachePath": "./modules/commands/cache",
+        "AllowFileExtension": [
+            ".png",
+            ".jpg",
+            ".jpeg",
+            ".mp4",
+            ".mp3",
+            ".m4a",
+            ".ttf",
+            ".gif"
+        ]
+    },
+    "configApi": {
+        "link": [
+            "https://18c43efc-c39d-4527-8339-b6b5f08ac470-00-c9x891o41cjk.global.replit.dev",
+            "https://www.nguyenmanh.name.vn"
+        ],
+        "key": [
+            "MDongVip_6886904368",
+            "x66MGQ25"
+        ],
+        "domain": "https://apibot.pmd06.repl.co",
+        "keyApi": "MDongVip_6886904368"
+    },
+    "adminUpdate": {
+        "autoUnsend": true,
+        "sendNoti": true,
+        "timeToUnsend": 10
+    },
+    "log": {
+        "enable": true
+    },
+    "sing": {
+        "YOUTUBE_API": "AIzaSyDqzHrBUI8DCqlWw-nHfETw-0lvzBJ9z5Q",
+        "SOUNDCLOUD_API": "M4TSyS6eV0AcMynXkA3qQASGcOFQTWub"
+    },
+    "hunter": {
+        "userToken": "D7tTFhgD",
+        "adminToken": "ZkSy3UsT"
+    },
+    "loto": {
+        "maxPlayers": 10,
+        "getDelay": 4
+    },
+    "xidach": {
+        "maxPlayers": 5,
+        "normalWinBonus": 1,
+        "superWinBonus": 2,
+        "epicWinBonus": 4
+    },
+    "workca": {
+        "cooldownTime": 30000
+    },
+    "cave": {
+        "cooldownTime": 60000
+    },
+    "pokemon": {
+        "APIKEY": ""
+    },
+    "mine": {
+        "APIKEY": ""
+    },
+    "daily": {
+        "cooldownTime": 86400000,
+        "rewardCoin": 200
+    },
+    "cauca": {
+        "APIKEY": ""
+    },
+    "version": "1.2.14",
+    "work": {
+        "cooldownTime": ""
+    },
+    "leave": {
+        "status": false,
+        "number": 0
+    }
+}

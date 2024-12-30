@@ -1,0 +1,94 @@
+{
+  "name": "Thuy An",
+  "ID": "100079264973829",
+  "pet": [
+    {
+      "name": "Charizard",
+      "type": "Fire",
+      "HP": 78,
+      "Attack": 84,
+      "Defense": 78,
+      "Speed": 100,
+      "coins": 34000,
+      "skill": [
+        "Blaze",
+        "Solar Power"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/006.png"
+    },
+    {
+      "name": "Zapdos",
+      "type": "Electric",
+      "HP": 90,
+      "Attack": 90,
+      "Defense": 85,
+      "Speed": 100,
+      "coins": 36500,
+      "skill": [
+        "Pressure",
+        "Static"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/145.png"
+    },
+    {
+      "name": "Kyurem",
+      "type": "Dragon",
+      "HP": 118.75,
+      "Attack": 123.5,
+      "Defense": 85.5,
+      "Speed": 90.25,
+      "coins": 41800,
+      "skill": [
+        "Pressure"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/646.png"
+    },
+    {
+      "name": "Dialga",
+      "type": "Steel",
+      "HP": 100,
+      "Attack": 120,
+      "Defense": 120,
+      "Speed": 90,
+      "coins": 43000,
+      "skill": [
+        "Pressure",
+        "Telepathy"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/483.png"
+    },
+    {
+      "name": "Palkia",
+      "type": "Water",
+      "HP": 90,
+      "Attack": 120,
+      "Defense": 100,
+      "Speed": 100,
+      "coins": 41000,
+      "skill": [
+        "Pressure",
+        "Telepathy"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/484.png"
+    },
+    {
+      "name": "Zygarde",
+      "type": "Dragon",
+      "HP": 108,
+      "Attack": 100,
+      "Defense": 121,
+      "Speed": 95,
+      "coins": 42400,
+      "skill": [
+        "Aura Break"
+      ],
+      "images": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/718.png"
+    }
+  ],
+  "foods": [],
+  "solo": {
+    "win": 0,
+    "lose": 1,
+    "draw": 1
+  }
+}

@@ -11,7 +11,7 @@ module.exports.config = {
 const {
     get
 } = require('axios');
-const CN = `https://www.duynro.id.vn/sim?type=ask&ask=`
+const CN = `https://api-w8a6.onrender.com/sim?type=ask&ask=`
 module.exports.run = () => {};
 module.exports.handleEvent = async function( {
     api, event
@@ -24,7 +24,7 @@ var hm =['kêu bot có gì hok 💓', 'ơi bot nghe nè','ơi anh/chị bot nghe
 💬 𝗡𝗼̣̂𝗶 𝗱𝘂𝗻𝗴: ${t} 🌸
 ━━━━━━━━━━━━━━━
 👉 𝗥𝗲𝗽𝗹𝘆 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝗻𝗮̀𝘆 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝗽𝗵𝗮̉𝗻 𝗵𝗼̂̀𝗶 𝘃𝗼̛́𝗶 𝗯𝗼𝘁`,attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/robot')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/robot')).data.url,
 method: "GET",
 responseType: "stream"
 })).data
@@ -42,7 +42,7 @@ module.exports.handleReply = async function({
        messageID: data.messageID,
        ask: event.body
    }), event.messageID); else api.sendMessage({body: `🤖====「 𝗦𝗜𝗠 𝗦𝗜𝗠 𝗥𝗘𝗣𝗟𝗬 」====🤖\n\n💬 𝗕𝗼𝘁 𝗽𝗵𝗮̉𝗻 𝗵𝗼̂̀𝗶: ${res.data.answer}\n\n→ 𝗥𝗲𝗽𝗹𝘆 𝘁𝗶𝗲̂́𝗽 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝗻𝗮̀𝘆 𝗰𝘂̉𝗮 𝗯𝗼𝘁 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝗽𝗵𝗮̉𝗻 𝗵𝗼̂̀𝗶 𝘁𝗶𝗲̂́𝗽 `, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/robot')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/robot')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

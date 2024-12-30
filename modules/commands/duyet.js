@@ -110,7 +110,7 @@ module.exports.run = async  ({ event, api, args, Threads, Users, handleReply  })
 	const request = require('request');
 	const fs = require("fs");
       
-      axios.get('https://www.duynro.id.vn/images/canh').then(res => {
+      axios.get('https://api-w8a6.onrender.com/images/canh').then(res => {
 	let ext = res.data.url.substring(res.data.url.lastIndexOf(".") + 1);
 	let callback = function () {
       api.sendMessage({body: `\n== 『 𝗞𝗲̂́𝘁 𝗡𝗼̂́𝗶 𝗧𝗵𝗮̀𝗻𝗵 𝗖𝗼̂𝗻𝗴 』==

@@ -23,7 +23,7 @@ module.exports.run = async ({ api, event }) => {
 const fs = require("fs");
   const ClientID = "c76eb7edd1459f3"
   if (type !== "message_reply" || messageReply.attachments.length == 0) return api.sendMessage({body:`=====『 𝐌𝐄𝐍𝐔 𝐈𝐌𝐆𝐔𝐑 』=====\n━━━━━━━━━━━━━━━━━━\n1.𝐁𝐚̣𝐧 𝐜𝐨́ 𝐭𝐡𝐞̂̉ 𝐝𝐮̀𝐧𝐠 𝐢𝐦𝐠𝐮𝐫 + 𝐚̉𝐧𝐡\n2.𝐁𝐚̣𝐧 𝐜𝐨́ 𝐭𝐡𝐞̂̉ 𝐝𝐮̀𝐧𝐠 𝐢𝐦𝐠𝐮𝐫 + 𝐯𝐢𝐝𝐞𝐨\n𝐀𝐧𝐡 𝐡𝐮̛𝐨̛́𝐧𝐠 𝐝𝐚̂̃𝐧 𝐭𝐡𝐞̂́ 𝐦𝐚̀ 𝐤𝐡𝐨̂𝐧𝐠 𝐛𝐢𝐞̂́𝐭 𝐝𝐮̀𝐧𝐠 𝐭𝐡𝐢̀ 𝐜𝐡𝐞̂́𝐭 𝐦𝐞̣ đ𝐢 😏\n𝐓𝐡𝐚̉ 𝐜𝐚̉𝐦 𝐱𝐮́𝐜 "👍" 𝐜𝐨́ 𝐛𝐚̂́𝐭 𝐧𝐠𝐨̛̀ 𝐧𝐞̀🐧 `,attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data
@@ -64,7 +64,7 @@ responseType: "stream"
     }
   }
   return api.sendMessage({body: `====『 𝐈𝐌𝐆𝐔𝐑 𝐔𝐏𝐋𝐎𝐀𝐃 』====\n\n→ 𝐓𝐡𝐚̀𝐧𝐡 𝐜𝐨̂𝐧𝐠: ${Succes}\n→ 𝐓𝐡𝐚̂́𝐭 𝐛𝐚̣𝐢: ${Error.length}\n━━━━━━━━━━━━━━━━━━\n𝐋𝐢𝐧𝐤 𝐚̉𝐧𝐡 𝐯𝐮̛̀𝐚 𝐮𝐩:\n${msg}`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data
@@ -81,7 +81,7 @@ if (event.reaction != "👍") return;
     const request = global.nodemodule["request"];
     const axios = global.nodemodule['axios'];
 return api.sendMessage({body:`𝐈𝐜𝐨𝐧 𝐜𝐚́𝐢 𝐥𝐨̂̀𝐧 𝐦𝐞̣ 𝐦𝐚̀𝐲 !!`,attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

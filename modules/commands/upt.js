@@ -45,7 +45,7 @@ moment.tz('Asia/Ho_Chi_Minh').format('dddd');
     }
     }
     api.sendMessage({body:`====「 𝗨𝗣𝗧𝗜𝗠𝗘 𝗥𝗢𝗕𝗢𝗧 」 ====\n⏰𝗧𝗶𝗺𝗲: ${gio}\n🗓𝐓𝐡𝐮̛́: ${thu}\n🤖𝗧𝗲̂𝗻 𝗕𝗼𝘁: ${global.config.BOTNAME}\n📋𝗧𝗼̂̉𝗻𝗴 𝗻𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴: ${global.data.allUserID.length}\n📡𝗣𝗶𝗻𝗴: ${Date.now() - dateNow} ms\n𝐁𝐨𝐭 𝐡𝐢𝐞̣̂𝐧 𝐭𝐚̣𝐢 𝐝𝐚̃ 𝐡𝐨𝐚̣𝐭 𝐝𝐨̣̂𝐧𝐠 𝐝𝐮̛𝐨̛̣𝐜: ${hours} 𝐆𝐢𝐨̛̀ ${minutes} 𝐏𝐡𝐮́𝐭 ${seconds} 𝐆𝐢𝐚̂𝐲`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

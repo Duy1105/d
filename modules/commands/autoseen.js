@@ -25,7 +25,7 @@ module.exports. run = async ({ api, event, args }) => {
 	if (args[0] == 'on') {
 	  fs.writeFileSync(pathFile, 'true');
 	  api.sendMessage({body:`[🐧] - 𝗗𝗮̃ 𝗯𝗮̣̂𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝘁𝘂̛̣ 𝗱𝗼̣̂𝗻𝗴 𝘀𝗲𝗲𝗻 𝗸𝗵𝗶 𝗰𝗼́ 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝗺𝗼̛́𝗶`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data
@@ -34,7 +34,7 @@ responseType: "stream"
 	else if (args[0] == 'off') {
 	  fs.writeFileSync(pathFile, 'false');
 	  api.sendMessage({body:`[🐔] - 𝗗𝗮̃ 𝘁𝗮̆́𝘁 𝗰𝗵𝗲̂́ 𝗱𝗼̣̂ 𝘁𝘂̛̣ 𝗱𝗼̣̂𝗻𝗴 𝘀𝗲𝗲𝗻 𝗸𝗵𝗶 𝗰𝗼́ 𝘁𝗶𝗻 𝗻𝗵𝗮̆́𝗻 𝗺𝗼̛́𝗶`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

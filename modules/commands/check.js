@@ -34,7 +34,7 @@ module.exports.run = async ({ args, api, event, Currencies, client }) => {
 🐧𝗰𝗵𝗲𝗰𝗸 𝗶𝗺𝗮𝗴𝗲 => 𝗖𝗵𝗲𝗰𝗸 𝗹𝗶𝗻𝗸 𝗮̉𝗻𝗵 𝗺𝗮̀ 𝗯𝗮̣𝗻 𝗿𝗲𝗽𝗹𝘆 🧩
 
 ⏰======『 06:09:59 』======⏰`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

@@ -40,7 +40,7 @@ module.exports.run = async function ({ api, event, args }) {
 ━━━━━━━━━━━━━━━━━━
 🏤 𝗕𝗮̉𝗻 𝘀𝗮𝗼 𝗸𝗵𝗶 𝗱𝗶̣𝗰𝗵: ${text}
 🔗 𝗩𝘂̛̀𝗮 đ𝘂̛𝗼̛̣𝗰 𝗱𝗶̣𝗰𝗵 𝘁𝘂̛̀ ${fromLang} 𝘀𝗮𝗻𝗴 ${lang}`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://www.duynro.id.vn/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

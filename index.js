@@ -9,7 +9,6 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 8080;
 
-// Kiểm tra tổng số Package
 (async () => {
     try {
         const data = await fs.readFile('package.json', 'utf8');
@@ -22,16 +21,14 @@ const port = process.env.PORT || 8080;
     }
 })();
 
-// Định tuyến trang chủ
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'utils/index.html'));
 });
 
 app.listen(port, () => {
     logger(`Server đang chạy tại cổng ${port}`, '[ SERVER ]');
-});
+});*/
 
-// Tải các lệnh từ thư mục modules/commands
 try {
     const files = fs.readdirSync('./modules/commands');
     files.forEach(file => {
@@ -74,7 +71,6 @@ function startBot(message) {
     });
 }
 
-// Lấy thông tin IP của server
 async function getIpInfo() {
     try {
         const response = await fetch("https://ipinfo.io/json");
@@ -89,7 +85,6 @@ async function getIpInfo() {
 }
 getIpInfo();
 
-// Khởi động bot sau khi tải dữ liệu
 setTimeout(() => {
     logger("Bot Mirai đang tải dữ liệu", "[ Kiểm tra   ]");
     startBot();

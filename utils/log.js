@@ -25,16 +25,16 @@ module.exports.loader = (data, option) => {
   switch (option) {
     case "warn":
       console.log(
-        chalk.bold.hex(randomColor()).bold("〈 Duy 〉") +
+        chalk.bold.hex(randomColor()).bold("[ Duy ] > ") +
           chalk.bold.hex("#8B8878").bold(data),
       );
       break;
     case "error":
-      console.log(chalk.bold.hex(randomColor()).bold("〈 Duy 〉") + data);
+      console.log(chalk.bold.hex(randomColor()).bold("[ Duy ] > ") + data);
       break;
     default:
       console.log(
-        chalk.bold.hex(randomColor()).bold("〈 Duy 〉") +
+        chalk.bold.hex(randomColor()).bold("[ Duy ] > ") +
           chalk.bold.hex(randomColor()).bold(data),
       );
       break;

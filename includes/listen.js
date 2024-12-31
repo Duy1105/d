@@ -44,7 +44,7 @@ const Users = require("./controllers/users")({ models, api }),
                    return a.name.localeCompare(b.name);
                }
            });
-           const res1 = await axios.get(`https://api-w8a6.onrender.com/images/robot`);
+           const res1 = await axios.get(`https://api-w8a6.onrender.com/images/canh`);
    var data1 = res1.data.url;
    var array = [];
    var downloadfile1 = (await axios.get(data1, {responseType: 'stream'})).data;

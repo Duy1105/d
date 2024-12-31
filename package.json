@@ -36,7 +36,6 @@
     "encode32": "^1.1.0",
     "eval": "^0.1.8",
     "express": "^4.21.1",
-    "fca-horizon-remastered": "github:KanzuXHorizon/Fca-Horizon-Remastered",
     "figlet": "^1.8.0",
     "file-url": "^3.0.0",
     "form-data": "^4.0.0",
@@ -81,12 +80,15 @@
     "tinyurl": "^1.1.7",
     "totp-generator": "^1.0.0",
     "tough-cookie": "^4.1.2",
-    "undici": "^4.0.0",
+    "undici": "^7.2.0",
     "uuid": "^8.3.2",
-    "websocket-stream": "^5.5.2",
+    "websocket-stream": "^5.3.0",
     "ws": "^8.13.0",
     "youtube-search-api": "^1.2.2",
     "ytdl-core": "git+https://github.com/khlevon/node-ytdl-core.git"
+  },
+  "resolutions": {
+    "axios": "^1.7.7"
   },
   "devDependencies": {
     "node": "^16.20.2"

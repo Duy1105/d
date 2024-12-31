@@ -1,42 +1,42 @@
 const chalk = require("chalk");
+
 function randomColor() {
-  var color = "";
-  for (var i = 0; i < 3; i++) {
-    var sub = Math.floor(Math.random() * 256).toString(16);
-    color += sub.length == 1 ? "0" + sub : sub;
+  let color = "";
+  for (let i = 0; i < 3; i++) {
+    color += Math.floor(Math.random() * 256).toString(16).padStart(2, "0");
   }
-  return "#" + color;
+  return `#${color}`;
 }
+
+function logMessage(prefix, data, color1, color2 = color1) {
+  console.log(
+    chalk.bold.hex(color1).bold(prefix) + chalk.bold.hex(color2).bold(data),
+  );
+}
+
 module.exports = (data, option) => {
   switch (option) {
     case "warn":
-      console.log(chalk.bold.hex("#ff0000").bold("» Lỗi « ") + data);
-      break;
     case "error":
-      console.log(chalk.bold.hex("#ff0000").bold("» Lỗi « ") + data);
+      logMessage("» Lỗi « ", data, "#ff0000");
       break;
     default:
-      console.log(chalk.bold.hex(randomColor()).bold(`${option} ➟ `) + data);
+      logMessage(`${option} ➟ `, data, randomColor());
       break;
   }
 };
 
 module.exports.loader = (data, option) => {
+  const prefix = "[ Duy ] > ";
   switch (option) {
     case "warn":
-      console.log(
-        chalk.bold.hex(randomColor()).bold("[ Duy ] > ") +
-          chalk.bold.hex("#8B8878").bold(data),
-      );
+      logMessage(prefix, data, randomColor(), "#8B8878");
       break;
     case "error":
-      console.log(chalk.bold.hex(randomColor()).bold("[ Duy ] > ") + data);
+      logMessage(prefix, data, randomColor());
       break;
     default:
-      console.log(
-        chalk.bold.hex(randomColor()).bold("[ Duy ] > ") +
-          chalk.bold.hex(randomColor()).bold(data),
-      );
+      logMessage(prefix, data, randomColor(), randomColor());
       break;
   }
 };

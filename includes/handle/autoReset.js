@@ -1,31 +1,16 @@
-const moment = require('moment-timezone');
+const moment = require("moment-timezone");
 module.exports = function () {
-  setInterval(async () => {
-    const thoiGianHienTai = moment.tz("Asia/Ho_Chi_MinH");
+  const intervalHours = 2;
 
-    const timeRestart = [
-      { gio: 2, phut: 30, giay: 0 },
-      { gio: 4, phut: 30, giay: 0 },
-      { gio: 7, phut: 30, giay: 0 },
-      { gio: 10, phut: 30, giay: 0 },
-      { gio: 11, phut: 12, giay: 30 },
-      { gio: 13, phut: 30, giay: 0 },
-      { gio: 15, phut: 0, giay: 0 },
-      { gio: 17, phut: 30, giay: 0 },
-      { gio: 19, phut: 0, giay: 0 },
-      { gio: 20, phut: 30, giay: 0 },
-      { gio: 22, phut: 30, giay: 0 },
-      { gio: 23, phut: 40, giay: 0 }
-    ];
+  const checkRestart = () => {
+    const currentTime = moment.tz("Asia/Ho_Chi_Minh");
+    const hours = currentTime.hours();
 
-    for (const thoiDiem of timeRestart) {
-      if (
-        thoiGianHienTai.hour() === thoiDiem.gio &&
-        thoiGianHienTai.minute() === thoiDiem.phut &&
-        thoiGianHienTai.second() === thoiDiem.giay
-      ) {
-        process.exit(1);
-      }
+    if (hours % intervalHours === 0 && currentTime.minutes() === 0 && currentTime.seconds() === 0) {
+      console.log("Đã tới thời gian khởi động lại. Thoát chương trình...");
+      process.exit(1);
     }
-  }, 1000);
+  };
+
+  setInterval(checkRestart, 1000);
 };

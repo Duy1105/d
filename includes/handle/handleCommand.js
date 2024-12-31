@@ -68,7 +68,7 @@ responseType: "stream"
                 if (userBanned.has(senderID)) {
                     const { reason, dateAdded } = userBanned.get(senderID) || {};
     const res1 = await axios.get(`https://api-w8a6.onrender.com/images/robot`);
-const res2 = await axios.get('https://api-w8a6.onrender.com/images/canh`);
+const res2 = await axios.get(`https://api-w8a6.onrender.com/images/canh`);
 var data1 = res1.data.url;
 var array = [];
 var data2 = res2.data.url;

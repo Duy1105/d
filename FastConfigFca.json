@@ -15,8 +15,8 @@
 	"ResetDataLogin": false,
 	"AutoInstallNode": false,
 	"AntiSendAppState": true,
-	"AutoRestartMinutes": 120,
-	"RestartMQTT_Minutes": 120,
+	"AutoRestartMinutes": 0,
+	"RestartMQTT_Minutes": 0,
 	"Websocket_Extension": {
 		"Status": false,
 		"ResetData": false,

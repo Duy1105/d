@@ -21,13 +21,13 @@ const port = process.env.PORT || 8080;
     }
 })();
 
-/*app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'utils/index.html'));
 });
 
 app.listen(port, () => {
     logger(`Server đang chạy tại cổng ${port}`, '[ SERVER ]');
-});*/
+});
 
 try {
     const files = fs.readdirSync('./modules/commands');

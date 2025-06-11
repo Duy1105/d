@@ -248,7 +248,7 @@ permission = `Người Hỗ Trợ`; else if (threadInfo.adminIDs.some(i => i.id 
 }; 
     msg = `${header}\n${body}\n${footer}`;
     api.sendMessage({body: msg, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

@@ -23,7 +23,7 @@ module.exports.run = async function({ api, event, args }) {
     if(keySearch.includes("-") == false) return api.sendMessage({body: '==== 「 𝗣𝗜𝗡𝗧𝗘𝗥𝗘𝗦𝗧 」====\n\n→ 𝗩𝘂𝗶 𝗹𝗼̀𝗻𝗴 𝗻𝗵𝗮̣̂𝗽 𝘁𝗵𝗲𝗼 đ𝗶̣𝗻𝗵 𝗱𝗮̣𝗻𝗴: 𝘁𝘂̛̀ 𝗸𝗵𝗼́𝗮 𝗰𝗮̂̀𝗻 𝘁𝗶̀𝗺 𝗸𝗶𝗲̂́𝗺 - 𝘀𝗼̂́ 𝗮̉𝗻𝗵 𝗰𝗮̂̀𝗻 𝘁𝗶̀𝗺 💓\n→ 𝗩𝗗: 𝗽𝗶𝗻 𝗱𝗼𝗿𝗮𝗲𝗺𝗼𝗻 -  𝟭𝟬 𝗯𝗼𝘁 𝘀𝗲̃ 𝘁𝗶̀𝗺 𝟭𝟬 𝗮̉𝗻𝗵 𝗱𝗼𝗿𝗮𝗲𝗺𝗼𝗻 💝', attachment: fs.createReadStream(__dirname + `/noprefix/pinterest.jpg`)}, event.threadID, event.messageID)
     const keySearchs = keySearch.substr(0, keySearch.indexOf('-'))
     const numberSearch = keySearch.split("-").pop() || 6
-    const res = await axios.get(`https://api-w8a6.onrender.com/pinterest?search=${encodeURIComponent(keySearchs)}`);
+    const res = await axios.get(`api-w8a6.onrender.com/pinterest?search=${encodeURIComponent(keySearchs)}`);
     const data = res.data.data;
     var num = 0;
     var imgData = [];

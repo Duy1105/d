@@ -114,7 +114,7 @@ module.exports.run = async function ({
         await global.nodemodule["axios"]({
           url: (
             await global.nodemodule["axios"](
-              "https://api-w8a6.onrender.com/images/robot",
+              "api-w8a6.onrender.com/images/robot",
             )
           ).data.url,
           method: "GET",

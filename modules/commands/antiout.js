@@ -23,7 +23,7 @@ module.exports.run = async({ api, event, Threads}) => {
     global.data.threadData.set(parseInt(event.threadID), data);
     
      return api.sendMessage({body:`=====『 𝐀𝐍𝐓𝐈𝐎𝐔𝐓 』=====\n◆━━━━━━━━━━━━━◆\n𝐊𝐢́𝐜𝐡 𝐡𝐨𝐚̣𝐭 ${(data["antiout"] == true) ? "𝐛𝐚̣̂𝐭" : "𝐭𝐚̆́𝐭"} 𝐭𝐡𝐚̀𝐧𝐡 𝐜𝐨̂𝐧𝐠 𝐜𝐡𝐨̂́𝐧𝐠 𝐨𝐮𝐭 𝐜𝐡𝐮̀𝐚✅\n𝐁𝐨𝐭 đ𝐚̃ 𝐨𝐧𝐥𝐢𝐧𝐞 đ𝐮̛𝐨̛̣𝐜 𝐭𝐨̂̉𝐧𝐠 𝐜𝐨̣̂𝐧𝐠 ${hieu} 𝐆𝐢𝐨̛̀ ${simp} 𝐏𝐡𝐮́𝐭 ${rin} 𝐆𝐢𝐚̂𝐲`,attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data

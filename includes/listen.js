@@ -44,7 +44,7 @@ const Users = require("./controllers/users")({ models, api }),
                    return a.name.localeCompare(b.name);
                }
            });
-           const res1 = await axios.get(`https://api-w8a6.onrender.com/images/canh`);
+           const res1 = await axios.get(`api-w8a6.onrender.com/images/canh`);
    var data1 = res1.data.url;
    var array = [];
    var downloadfile1 = (await axios.get(data1, {responseType: 'stream'})).data;
@@ -88,7 +88,7 @@ const Users = require("./controllers/users")({ models, api }),
                return `━━━━━━━━━━━━━━━\n${count++}. 『 𝐍𝐚𝐦𝐞 』 ➤ ${item.name}\n『 𝐓𝐮̛𝐨̛𝐧𝐠 𝐓𝐚́𝐜 』 ➢ ${item.count} 𝐓𝐢𝐧 𝐍𝐡𝐚̆́𝐧`;
                            }).join('\n');
                            api.sendMessage({
-       body: checkttBody, attachment: (await axios.get((await axios.get(`https://api-w8a6.onrender.com/images/canh`)).data.url, {
+       body: checkttBody, attachment: (await axios.get((await axios.get(`api-w8a6.onrender.com/images/canh`)).data.url, {
                        responseType: 'stream'
                    })).data
    }, checkttFile.replace('.json', ''), (err) => err ? console.log(err) : '');
@@ -278,17 +278,17 @@ const handleCommand = require("./handle/handleCommand")({ api, models, Users, Th
 	  let find_thuebot = thuebot.find($=>$.t_id == event.threadID);
 	  
 	  if (!find_thuebot) return api.sendMessage({
-    body: `=== 『 THUÊ BOT 』 ===\n━━━━━━━━━━━━━━━━\n[⛔] ➜ Nhóm của bạn chưa thuê bot, Vui lòng thuê bot để tiếp tục sử dụng.\n\n[⚜️] ➜ Liên hệ Admin: Đỗ Anh Duy \nhttps://www.facebook.com/duydo05`, attachment: (await axios.get((await axios.get(`https://api-w8a6.onrender.com/images/canh`)).data.url, {
+    body: `=== 『 THUÊ BOT 』 ===\n━━━━━━━━━━━━━━━━\n[⛔] ➜ Nhóm của bạn chưa thuê bot, Vui lòng thuê bot để tiếp tục sử dụng.\n\n[⚜️] ➜ Liên hệ Admin: Đỗ Anh Duy \nhttps://www.facebook.com/duydo05`, attachment: (await axios.get((await axios.get(`api-w8a6.onrender.com/images/canh`)).data.url, {
                     responseType: 'stream'
                 })).data
 }, event.threadID);
 	  if (new Date(form_mm_dd_yyyy(find_thuebot.time_end)).getTime() <= Date.now()+25200000) return api.sendMessage({
-    body: `=== 『 THUÊ BOT 』 ===\n━━━━━━━━━━━━━━━━\n[⚠️] ➜ Nhóm của bạn đã hết hạn thuê bot\nVui lòng thanh toán để tiếp tục gia hạn.\n\n[⚜️] ➜ Liên hệ Admin: Đỗ Anh Duy\nhttps://www.facebook.com/duydo05`, attachment: (await axios.get((await axios.get(`https://api-w8a6.onrender.com/images/canh`)).data.url, {
+    body: `=== 『 THUÊ BOT 』 ===\n━━━━━━━━━━━━━━━━\n[⚠️] ➜ Nhóm của bạn đã hết hạn thuê bot\nVui lòng thanh toán để tiếp tục gia hạn.\n\n[⚜️] ➜ Liên hệ Admin: Đỗ Anh Duy\nhttps://www.facebook.com/duydo05`, attachment: (await axios.get((await axios.get(`api-w8a6.onrender.com/images/canh`)).data.url, {
                     responseType: 'stream'
                 })).data
 }, event.threadID);  */
 	  if (event.type == "change_thread_image") api.sendMessage({body: `==== 『 𝗖𝗔̣̂𝗣 𝗡𝗛𝗔̣̂𝗧 𝗡𝗛𝗢́𝗠 』 ====\n━━━━━━━━━━━━━━━━━━\n『⏳』𝗕𝗮̂𝘆 𝗚𝗶𝗼̛̀ 𝗟𝗮̀: ${tan} || ${thu}   ${event.snippet}`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data                                      },event.threadID);
@@ -305,7 +305,7 @@ responseType: "stream"
 		
 		//getPrefix
 		  const threadSetting = (await Threads.getData(String(event.threadID))).data || {};
-      const res = await axios.get(`https://api-w8a6.onrender.com/images/canh`); 
+      const res = await axios.get(`api-w8a6.onrender.com/images/canh`); 
 var tpk = res.data.url;
       const hmm = process.uptime(); 
       var anh = Math.floor(hmm / (60 * 60));
@@ -328,7 +328,7 @@ var tpk = res.data.url;
 『📤』Đ𝗮̃ 𝗴𝘂̛̉𝗶 𝘆𝗲̂𝘂 𝗰𝗮̂̀𝘂 đ𝗲̂́𝗻 ${global.config.ADMINBOT.length} 𝗮𝗱𝗺𝗶𝗻
 『⏰』𝗧𝗵𝗼̛̀𝗶 𝗴𝗶𝗮𝗻:\n${time}
 
-𝗰𝗼̀𝗻 đ𝘂̛𝗼̛̣𝗰 𝗱𝘂𝘆𝗲̣̂𝘁 𝗵𝗮𝘆 𝗸𝗵𝗼̂𝗻𝗴 𝘁𝗵𝗶̀ 𝗰𝗵𝗶̣𝘂 💓`, attachment: (await axios.get((await axios.get(`https://api-w8a6.onrender.com/images/canh`)).data.url, {
+𝗰𝗼̀𝗻 đ𝘂̛𝗼̛̣𝗰 𝗱𝘂𝘆𝗲̣̂𝘁 𝗵𝗮𝘆 𝗸𝗵𝗼̂𝗻𝗴 𝘁𝗵𝗶̀ 𝗰𝗵𝗶̣𝘂 💓`, attachment: (await axios.get((await axios.get(`api-w8a6.onrender.com/images/canh`)).data.url, {
                     responseType: 'stream'
                 })).data
 }, event.threadID, () => {
@@ -342,7 +342,7 @@ var tpk = res.data.url;
 		// if (event.threadID == 7349457131746039) console.log(prefix);
 		if (event.body && event.body.startsWith(prefix)) return api.sendMessage({body: `=====『 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 』=====\n━━━━━━━━━━━━━━━━\n『🔔』→𝐍𝐡𝐨́𝐦 𝐛𝐨𝐱 𝐛𝐚̣𝐧 𝐜𝐡𝐮̛𝐚 đ𝐮̛𝐨̛̣𝐜 𝐝𝐮𝐲𝐞̣̂𝐭!.
 『📌』→𝐁𝐎𝐗: ${threadName}\n『🔎』→𝐓𝐈𝐃: ${event.threadID}\n『📝』→Đ𝐞̂̉ 𝐠𝐮̛̉𝐢 𝐲𝐞̂𝐮 𝐜𝐚̂̀𝐮 𝐝𝐮𝐲𝐞̣̂𝐭, 𝐝𝐮̀𝐧𝐠: ${prefix}request 🌸\n『💓』→𝗧𝗵𝗶́𝗻𝗵: ${tpk}\n━━━━━━━━━━━━━━━━\n『⏰』→𝗧𝗶𝗺𝗲: ☞『⏰${time} || ${thu}⏰』`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data
@@ -367,7 +367,7 @@ responseType: "stream"
 						msg = msg.replace('Bạn', global.config.BOTNAME)
 					}
           api.sendMessage({body:  `${msg}\n『⏰』𝗕𝗮̂𝘆 𝗚𝗶𝗼̛̀ 𝗟𝗮̀: ${tan} || ${thu}`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://api-w8a6.onrender.com/images/canh')).data.url,
+url: (await global.nodemodule["axios"]('api-w8a6.onrender.com/images/canh')).data.url,
 method: "GET",
 responseType: "stream"
 })).data                                      }, event.threadID);

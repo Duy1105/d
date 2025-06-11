@@ -20,14 +20,14 @@
     "assert": "^2.1.0",
     "attachments": "^0.7.1",
     "axios": "^1.7.7",
-    "better-sqlite3": "^7.6.2",
+    "better-sqlite3": "^11.10.0",
     "bluebird": "^3.7.2",
     "boolean": "^3.2.0",
-    "canvas": "^3.0.0",
+    "canvas": "^2.11.2",
     "chalk": "^4.1.2",
-    "cheerio": "^1.0.0-rc.10",
+    "cheerio": "^1.0.0-rc.12",
     "child_process": "^1.0.2",
-    "cookie": "^0.5.0",
+    "cookie": "^1.0.2",
     "crypto": "^1.0.1",
     "crypto-js": "^4.2.0",
     "deasync": "^0.1.28",
@@ -70,7 +70,6 @@
     "request": "^2.88.2",
     "semver": "^7.5.4",
     "sequelize": "^6.37.1",
-    "set-cookie": "0.0.4",
     "simple-youtube-api": "^5.2.1",
     "speakeasy": "^2.0.0",
     "sqlite": "^4.2.1",
@@ -80,18 +79,18 @@
     "tinyurl": "^1.1.7",
     "totp-generator": "^1.0.0",
     "tough-cookie": "^4.1.2",
-    "undici": "^7.2.0",
+    "turl": "^1.1.2",
+    "undici": "^5.26.5",
     "uuid": "^8.3.2",
     "websocket-stream": "^5.3.0",
-    "ws": "^8.13.0",
-    "youtube-search-api": "^1.2.2",
+    "ws": "^8.18.2",
+    "youtube-search-api": "^2.0.0",
     "ytdl-core": "git+https://github.com/khlevon/node-ytdl-core.git"
   },
   "resolutions": {
     "axios": "^1.7.7"
   },
   "devDependencies": {
-    "node": "^16.20.2"
-  },
-  "keywords": []
+    "node": "^18.20.2"
+  }
 }

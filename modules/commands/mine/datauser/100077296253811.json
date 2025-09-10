@@ -1,0 +1,29 @@
+{
+  "name": "Thái Bình",
+  "ID": "100077296253811",
+  "mainROD": null,
+  "GPS": {
+    "locate": null,
+    "area": null
+  },
+  "fishBag": [
+    {
+      "ID": 0,
+      "name": "Bedrock",
+      "category": "Legendary",
+      "size": 999999,
+      "sell": 0
+    }
+  ],
+  "item": [
+    {
+      "name": "Cúp đá",
+      "price": 1500,
+      "durability": 50,
+      "countdown": 9,
+      "countdownData": null,
+      "image": "https://i.imgur.com/XHTNRGF.png"
+    }
+  ],
+  "timeRegister": "18:27:06, 12/6/2023"
+}

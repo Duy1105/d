@@ -1,0 +1,40 @@
+[
+    {
+        "id": "100037140780211",
+        "name": "𝔻𝕠 𝔸𝕟𝕙 𝔻𝕦𝕪 :) ②⓪⓪⑤",
+        "level": 1,
+        "exp": 0,
+        "hp": 10000000000,
+        "atk": 2500000000,
+        "def": 2000000000,
+        "spd": 1000000000,
+        "the_luc": 5000000,
+        "karma": 0,
+        "points": 1000000,
+        "weapon": null,
+        "locationID": null,
+        "bag": [
+            {
+                "type": "weapon",
+                "id": 10,
+                "name": "Iron Sword I",
+                "usage": 0,
+                "HP": 4000,
+                "ATK": 210,
+                "DEF": 210,
+                "SPD": 2000,
+                "durability": 100,
+                "dmgBonus": 1,
+                "defBonus": 1,
+                "hpBonus": 1,
+                "spdBonus": 1,
+                "ArmorPiercing": 1,
+                "price": 1000,
+                "image": "https://i.imgur.com/JB2JAEm.png"
+            }
+        ],
+        "monster": [],
+        "history": [],
+        "created": 1703882440206
+    }
+]

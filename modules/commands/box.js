@@ -9,7 +9,7 @@ module.exports.config = {
   cooldowns: 1,
   dependencies: {
     "request": "",
-    "fs-extra": "path"
+    "fs-extra": ""
   }
 };
 module.exports.onLoad = () => {
@@ -17,7 +17,7 @@ module.exports.onLoad = () => {
     const request = require("request");
     const dirMaterial = __dirname + `/cache/`;
     if (!fs.existsSync(dirMaterial + "cache")) fs.mkdirSync(dirMaterial, { recursive: true });
-    if (!fs.existsSync(dirMaterial + "adm.png")) request("link").pipe(fs.createWriteStream(dirMaterial + "adm.png"));
+    if (!fs.existsSync(dirMaterial + "adm.png")) request("https://i.imgur.com/8tO9V4n.jpg").pipe(fs.createWriteStream(dirMaterial + "adm.png"));
 }
 
 const totalPath = __dirname + '/cache/totalChat.json';

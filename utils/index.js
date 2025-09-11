@@ -362,32 +362,6 @@ module.exports.streamUrl = async function(url) {
 	return res.data;
 }
 
-/*
-module.exports.catbox = async function(link) {
-	try {
-		const path = require('path');
-		const FormData = require('form-data');
-		const { headers } = await axios.head(link);
-		const contentType = headers['content-type'];
-		const extension = contentType.split('/')[1] || 'bin';
-		const filePath = path.join(process.cwd(), 'modules', 'commands', 'cache', `${Date.now()}.${extension}`);
-		const response = await axios({ method: 'GET', url: link, responseType: 'stream' });
-		const writer = fs.createWriteStream(filePath);
-		response.data.pipe(writer);
-		await new Promise((resolve, reject) => writer.on('finish', resolve).on('error', reject));
-		const formData = new FormData();
-		formData.append('reqtype', 'fileupload');
-		formData.append('fileToUpload', fs.createReadStream(filePath));
-		const { data } = await axios.post('https://catbox.moe/user/api.php', formData, {
-			headers: formData.getHeaders(),
-		});
-		fs.unlinkSync(filePath);
-		return data;
-	} catch (error) {
-		throw new Error(`Error uploading catbox: ${error.message}`);
-	}
-};
-*/
 module.exports.catbox = async function(filePathOrUrl) {
 		try {
 				const fs = require('fs');

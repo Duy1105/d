@@ -1,42 +1,21 @@
 const chalk = require("chalk");
 
-function randomColor() {
-  let color = "";
-  for (let i = 0; i < 3; i++) {
-    color += Math.floor(Math.random() * 256).toString(16).padStart(2, "0");
-  }
-  return `#${color}`;
-}
+const randColor = () =>
+  "#" + Array.from({ length: 3 }, () => Math.floor(Math.random() * 256).toString(16).padStart(2, "0")).join("");
 
-function logMessage(prefix, data, color1, color2 = color1) {
-  console.log(
-    chalk.bold.hex(color1).bold(prefix) + chalk.bold.hex(color2).bold(data),
-  );
-}
+const log = (prefix, data, c1, c2 = c1) =>
+  console.log(chalk.bold.hex(c1)(prefix) + chalk.bold.hex(c2)(data));
 
 module.exports = (data, option) => {
-  switch (option) {
-    case "warn":
-    case "error":
-      logMessage("» Lỗi « ", data, "#ff0000");
-      break;
-    default:
-      logMessage(`${option} ➟ `, data, randomColor());
-      break;
-  }
+  if (["warn", "error"].includes(option)) return log("» Lỗi « ", data, "#ff0000");
+  log(`${option} ➟ `, data, randColor());
 };
 
 module.exports.loader = (data, option) => {
   const prefix = "[ Duy ] > ";
   switch (option) {
-    case "warn":
-      logMessage(prefix, data, randomColor(), "#8B8878");
-      break;
-    case "error":
-      logMessage(prefix, data, randomColor());
-      break;
-    default:
-      logMessage(prefix, data, randomColor(), randomColor());
-      break;
+    case "warn": return log(prefix, data, randColor(), "#8B8878");
+    case "error": return log(prefix, data, randColor());
+    default: return log(prefix, data, randColor(), randColor());
   }
 };

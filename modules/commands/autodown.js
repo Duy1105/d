@@ -30,7 +30,7 @@ module.exports = {
 
         const video = data.medias[0];
         const ext = video.extension || "mp4";
-        const tempPath = path.join(__dirname, cache/down.${ext});
+        const tempPath = path.join(__dirname, 'cache/down.${ext}');
 
         const res = await axios.get(video.url, { responseType: "arraybuffer" });
         fs.writeFileSync(tempPath, res.data);

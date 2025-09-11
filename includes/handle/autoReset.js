@@ -1,12 +1,15 @@
 const moment = require("moment-timezone");
+
 module.exports = function () {
-  const intervalHours = 2;
+  const intervalHours = 3;
 
   const checkRestart = () => {
-    const currentTime = moment.tz("Asia/Ho_Chi_Minh");
-    const hours = currentTime.hours();
+    const now = moment.tz("Asia/Ho_Chi_Minh");
+    const h = now.hours(), m = now.minutes(), s = now.seconds();
 
-    if (hours % intervalHours === 0 && currentTime.minutes() === 0 && currentTime.seconds() === 0) {
+    if (h === 23 || h < 1) return;
+
+    if (h % intervalHours === 0 && m === 0 && s === 0) {
       console.log("Đã tới thời gian khởi động lại. Thoát chương trình...");
       process.exit(1);
     }

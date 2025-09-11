@@ -16,9 +16,9 @@ module.exports.config = {
 
 const loadCommand = function ({ moduleList, threadID, messageID }) {
 
-    const { execSync } = global.nodemodule['child_process'];
-    const { writeFileSync, unlinkSync, readFileSync } = global.nodemodule['fs-extra'];
-    const { join } = global.nodemodule['path'];
+    const { execSync } = require("child_process");
+    const { writeFileSync, unlinkSync, readFileSync } = require("fs-extra");
+    const { join } = require("path");
     const { configPath, mainPath, api } = global.client;
     const logger = require(mainPath + '/utils/log');
 

@@ -60,9 +60,9 @@ module.exports.languages = {
 }
 
 module.exports.loadCommand = function ({ moduleList, threadID, messageID, getText }) {
-    const { execSync } = global.nodemodule["child_process"];
-    const { writeFileSync, unlinkSync, readFileSync } = global.nodemodule["fs-extra"];
-    const { join } = global.nodemodule["path"];
+    const { execSync } = require("child_process");
+    const { writeFileSync, unlinkSync, readFileSync } = require("fs-extra");
+    const { join } = require("path");
     const { configPath, mainPath, api } = global.client;
     const logger = require(mainPath + "/utils/log");
     const listPackage = JSON.parse(readFileSync(global.client.mainPath + '/package.json')).dependencies;

@@ -23,7 +23,7 @@ let format_attachment = type => ({
 const { readFileSync, writeFileSync, unlinkSync } = require('fs')
 const stream_url = url => require('axios').get(url, { responseType: 'stream' }).then(res => res.data);
 const { resolve } = global.nodemodule["path"];
-const path = resolve(__dirname, '..', 'commands', `data`, "shortcutdata.json");
+const path = resolve(__dirname, '..', 'commands', `cache`, "shortcutdata.json");
 module.exports.onLoad = function ({
   api,
 }) {
@@ -433,7 +433,7 @@ try{
   const { threadID, messageID, senderID, mentions = {} } = event;
   const name = this.config.name;
 
-  const path = resolve(__dirname, '..', 'commands', `data`, "shortcutdata.json");
+  const path = resolve(__dirname, '..', 'commands', `cache`, "shortcutdata.json");
 
   switch (args[0]) {
       case 'join':

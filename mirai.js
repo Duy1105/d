@@ -8,8 +8,6 @@ const { execSync } = require("child_process");
 const logger = require("./utils/log.js");
 const login = require("./includes/fca-horizon-remastered");
 const con = require("./config.json");
-const listPackage = require("./package.json").dependencies;
-const listbuiltinModules = require("module").builtinModules;
 global.client = {
   commands: new Map(),
   events: new Map(),

@@ -404,11 +404,3 @@ module.exports.run = async function({ api, event, args, Users, Threads, Currenci
     }
 };
 
-module.exports.handleEvent = async function({ api, event, Threads }) {
-    if (event.body === "prefix" || event.body === "Prefix") {
-        const threadSetting = global.data.threadData.get(event.threadID) || {};
-        const prefix = threadSetting.PREFIX || global.config.PREFIX;
-        const msg = `🔍 ${global.config.BOTNAME} - Prefix của nhóm là: ${prefix}`;
-        return api.sendMessage(msg, event.threadID);
-    }
-};

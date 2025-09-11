@@ -1,111 +1,185 @@
-const fs = require('fs');
-const request = require('request');
+const fs = require("fs");
+const fse = require("fs-extra");
+const path = require("path");
+const axios = require("axios");
+const moment = require("moment-timezone");
 
 module.exports.config = {
-    name: "sendnoti",
-    version: "1.0.0",
-    hasPermssion: 2,
-    credits: "ZGToan Official",
-    description: "",
-    commandCategory: "admin",
-    usages: "[msg]",
-    cooldowns: 5,
+  name: "sendnoti",
+  version: "1.1.0",
+  hasPermssion: 2,
+  credits: "ZGToan Official • refactor by ChatGPT",
+  description: "Gửi thông báo đến tất cả nhóm và nhận phản hồi hai chiều",
+  commandCategory: "admin",
+  usages: "[msg] (có thể reply kèm file)",
+  cooldowns: 5
+};
+
+const cacheDir = path.join(__dirname, "cache");
+fse.ensureDirSync(cacheDir);
+
+// tải 1 url về file tạm
+async function downloadToTemp(url, filenameHint = "file") {
+  const { data, headers } = await axios.get(url, { responseType: "arraybuffer" });
+  let ext = path.extname(new URL(url).pathname) || "";
+  if (!ext) {
+    const ct = (headers["content-type"] || "").toLowerCase();
+    if (ct.includes("image/")) ext = `.${ct.split("/")[1]}`;
+    else if (ct.includes("video/")) ext = `.${ct.split("/")[1]}`;
+    else if (ct.includes("audio/")) ext = `.${ct.split("/")[1]}`;
+    else ext = ".bin";
+  }
+  const filePath = path.join(cacheDir, `${Date.now()}_${filenameHint}${ext}`);
+  fs.writeFileSync(filePath, data);
+  return filePath;
 }
 
-let atmDir = [];
-const moment = require('moment-timezone');
- const gio = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:s"); 
-const getAtm = (atm, body) => new Promise(async (resolve) => {
-    let msg = {}, attachment = [];
-    msg.body = body;
-    for(let eachAtm of atm) {
-        await new Promise(async (resolve) => {
-            try {
-                let response =  await request.get(eachAtm.url),
-                    pathName = response.uri.pathname,
-                    ext = pathName.substring(pathName.lastIndexOf(".") + 1),
-                    path = __dirname + `/cache/${eachAtm.filename}.${ext}`
-                response
-                    .pipe(fs.createWriteStream(path))
-                    .on("close", () => {
-                        attachment.push(fs.createReadStream(path));
-                        atmDir.push(path);
-                        resolve();
-                    })
-            } catch(e) { console.log(e); }
-        })
+// chuẩn hóa đính kèm từ event.attachments → trả về mảng filePaths
+async function materializeAttachments(atts = []) {
+  const files = [];
+  for (const a of atts) {
+    if (!a?.url) continue;
+    const hint = a?.type || "att";
+    try {
+      const p = await downloadToTemp(a.url, hint);
+      files.push(p);
+    } catch (e) {
+      console.error("[sendnoti] download attachment error:", e.message);
     }
-    msg.attachment = attachment;
-    resolve(msg);
-})
+  }
+  return files;
+}
+
+// tạo object gửi tin nhắn kèm đính kèm (ReadStream mới mỗi lần)
+function buildMessage(body, filePaths = []) {
+  return {
+    body,
+    attachment: filePaths.map(p => fs.createReadStream(p))
+  };
+}
+
+// tiện ích thời gian VN
+function nowVN() {
+  return moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss");
+}
 
 module.exports.handleReply = async function ({ api, event, handleReply, Users, Threads }) {
-    const { threadID, messageID, senderID, body } = event;
+  const { threadID, messageID, senderID, body = "", attachments = [] } = event;
+  const name = await Users.getNameUser(senderID);
+  const timeStr = nowVN();
 
-    let name = await Users.getNameUser(senderID);
-    switch (handleReply.type) {
-        case "sendnoti": {
-            let text = `=== [ sᴇɴᴅɴᴏᴛɪ ]  ===\n--------------------\nᴛɪᴍᴇ: ${gio}\n--------------------\n𝙏𝙪̛̀: ${name}\n--------------------\n𝘽𝙊𝙓: ${(await Threads.getInfo(threadID)).threadName || "Unknow"}\n--------------------\n𝙉𝙊̣̂𝙄 𝘿𝙐𝙉𝙂:${body}`;
-            if(event.attachments.length > 0) text = await getAtm(event.attachments, `=== [ sᴇɴᴅɴᴏᴛɪ ]  ===\n--------------------\nᴛɪᴍᴇ: ${gio}\n--------------------\n𝙏𝙪̛̀: ${name}\n--------------------\n𝘽𝙊𝙓: ${(await Threads.getInfo(threadID)).threadName || "Unknow"}\n--------------------\n𝙉𝙊̣̂𝙄 𝘿𝙐𝙉𝙂:${body}`);
-            api.sendMessage(text, handleReply.threadID, (err, info) => {
-                atmDir.forEach(each => fs.unlinkSync(each))
-                atmDir = [];
-                global.client.handleReply.push({
-                    name: this.config.name,
-                    type: "reply",
-                    messageID: info.messageID,
-                    messID: messageID,
-                    threadID
-                })
-            });
-            break;
-        }
-        case "reply": {
-            let text = `=== sᴇɴᴅɴᴏᴛɪ ===\n--------------------\nᴛɪᴍᴇ: ${gio}\n--------------------\n𝙁𝙧𝙤𝙢 ${name} 𝙒𝙞𝙩𝙝 𝙇𝙤𝙫𝙚!\n--------------------\n𝙉𝙊̣̂𝙄 𝘿𝙐𝙉𝙂: ${body}\n--------------------\n𝙧𝙚𝙥𝙡𝙮 𝙩𝙞𝙣 𝙣𝙝𝙖̆́𝙣 𝙣𝙖̀𝙮 𝙙𝙚̂̉ 𝙗𝙖́𝙤 𝙫𝙚̂̀ 𝙖𝙙𝙢𝙞𝙣`;
-            if(event.attachments.length > 0) text = await getAtm(event.attachments, `=== ᴛʜᴏ̂ɴɢ ʙᴀ́ᴏ ===\n--------------------\nᴛɪᴍᴇ: ${gio}\n--------------------\n ${body}\n--------------------\n𝙁𝙧𝙤𝙢 ${name} 𝙒𝙞𝙩𝙝 𝙇𝙤𝙫𝙚!\n--------------------\n𝙧𝙚𝙥𝙡𝙮 𝙩𝙞𝙣 𝙣𝙝𝙖̆́𝙣 𝙣𝙖̀𝙮 𝙙𝙚̂̉ 𝙗𝙖́𝙤 𝙫𝙚̂̀ 𝙖𝙙𝙢𝙞𝙣`);
-            api.sendMessage(text, handleReply.threadID, (err, info) => {
-                atmDir.forEach(each => fs.unlinkSync(each))
-                atmDir = [];
-                global.client.handleReply.push({
-                    name: this.config.name,
-                    type: "sendnoti",
-                    messageID: info.messageID,
-                    threadID
-                })
-            }, handleReply.messID);
-            break;
-        }
+  switch (handleReply.type) {
+    // Nhận phản hồi ở NHÓM → chuyển về ADMIN
+    case "fromGroup": {
+      const groupName = (await Threads.getInfo(threadID))?.threadName || "Unknown";
+      const head =
+        `=== [ sᴇɴᴅɴᴏᴛɪ ] ===\n` +
+        `⏰ 𝙏𝙞𝙢𝙚: ${timeStr}\n` +
+        `👤 𝙏𝙪̛̀: ${name}\n` +
+        `👥 𝘽𝙤𝙭: ${groupName}\n` +
+        `📝 𝙉𝙤̣̂𝙞 𝙙𝙪𝙣𝙜: ${body || "(không nội dung)"}`;
+
+      const tempFiles = await materializeAttachments(attachments);
+      const msg = buildMessage(head, tempFiles);
+
+      api.sendMessage(msg, handleReply.adminThreadID, (err, info) => {
+        // dọn file
+        for (const p of tempFiles) { try { fs.unlinkSync(p) } catch {} }
+        if (err) return;
+
+        // set cầu nối ngược: admin reply → quay lại nhóm
+        global.client.handleReply.push({
+          name: module.exports.config.name,
+          type: "fromAdmin",
+          messageID: info.messageID,
+          adminThreadID: handleReply.adminThreadID,
+          targetThreadID: handleReply.targetThreadID
+        });
+      });
+      break;
     }
-}
+
+    // Admin reply ở THREAD ADMIN → chuyển lại NHÓM
+    case "fromAdmin": {
+      const head =
+        `=== sᴇɴᴅɴᴏᴛɪ ===\n` +
+        `⏰ 𝙏𝙞𝙢𝙚: ${timeStr}\n` +
+        `👤 𝙁𝙧𝙤𝙢: ${name}\n` +
+        `📝 𝙉𝙤̣̂𝙞 𝙙𝙪𝙣𝙜: ${body || "(không nội dung)"}\n` +
+        `↩️ 𝙍𝙚𝙥𝙡𝙮 𝙩𝙞𝙣 𝙣𝙝𝙖̆́𝙣 𝙣𝙖̀𝙮 đ𝙚̂̉ 𝙗𝙖́𝙤 𝙫𝙚̂̀ 𝙖𝙙𝙢𝙞𝙣`;
+
+      const tempFiles = await materializeAttachments(attachments);
+      const msg = buildMessage(head, tempFiles);
+
+      api.sendMessage(msg, handleReply.targetThreadID, (err, info) => {
+        for (const p of tempFiles) { try { fs.unlinkSync(p) } catch {} }
+        if (err) return;
+
+        // nối chiều về admin tiếp
+        global.client.handleReply.push({
+          name: module.exports.config.name,
+          type: "fromGroup",
+          messageID: info.messageID,
+          adminThreadID: handleReply.adminThreadID,
+          targetThreadID: handleReply.targetThreadID
+        });
+      }, handleReply.replyToAdminMsgID /* có thể undefined */);
+      break;
+    }
+  }
+};
 
 module.exports.run = async function ({ api, event, args, Users }) {
-    const { threadID, messageID, senderID, messageReply } = event;
-    if (!args[0]) return api.sendMessage("Please input message", threadID);
-    let allThread = global.data.allThreadID || [];
-    let can = 0, canNot = 0;
-    let text = `=== ᴛʜᴏ̂ɴɢ ʙᴀ́ᴏ ===\n--------------------\nᴛɪᴍᴇ: ${gio}\n--------------------\n𝙉𝙊̣̂𝙄 𝘿𝙐𝙉𝙂: ${args.join(" ")}\n--------------------\n𝙏𝙪̛̀ ${await Users.getNameUser(senderID)} \n--------------------\n𝙧𝙚𝙥𝙡𝙮 𝙩𝙞𝙣 𝙣𝙝𝙖̆́𝙣 𝙣𝙖̀𝙮 𝙙𝙚̂̉ 𝙗𝙖́𝙤 𝙫𝙚̂̀ 𝙖𝙙𝙢𝙞𝙣`;
-    if(event.type == "message_reply") text = await getAtm(messageReply.attachments, `=== sᴇɴᴅɴᴏᴛɪ ===\n--------------------\nᴛɪᴍᴇ: ${gio}\n--------------------\n𝙉𝙊̣̂𝙄 𝘿𝙐𝙉𝙂: ${args.join(" ")}\n\n𝙏𝙪̛̀ ${await Users.getNameUser(senderID)}\n--------------------\n𝙧𝙚𝙥𝙡𝙮 𝙩𝙞𝙣 𝙣𝙝𝙖̆́𝙣 𝙣𝙖̀𝙮 𝙙𝙚̂̉ 𝙗𝙖́𝙤 𝙫𝙚̂̀ 𝙖𝙙𝙢𝙞𝙣`);
+  const { threadID, messageID, senderID, type, messageReply } = event;
+
+  const content = args.join(" ").trim();
+  if (!content && type !== "message_reply")
+    return api.sendMessage("Vui lòng nhập nội dung hoặc reply kèm file.", threadID, messageID);
+
+  const senderName = await Users.getNameUser(senderID);
+  const timeStr = nowVN();
+
+  // body gửi đi
+  const baseBody =
+    `=== ᴛʜᴏ̂ɴɢ ʙᴀ́ᴏ ===\n` +
+    `⏰ 𝙏𝙞𝙢𝙚: ${timeStr}\n` +
+    `📝 𝙉𝙤̣̂𝙞 𝙙𝙪𝙣𝙜: ${content || "(không nội dung)"}\n` +
+    `👤 𝙏𝙪̛̀: ${senderName}\n` +
+    `↩️ 𝙍𝙚𝙥𝙡𝙮 𝙩𝙞𝙣 𝙣𝙝𝙖̆́𝙣 𝙣𝙖̀𝙮 𝙙𝙚̂̉ 𝙗𝙖́𝙤 𝙫𝙚̂̀ 𝙖𝙙𝙢𝙞𝙣`;
+
+  // nếu admin reply kèm file ở lệnh, tải file 1 lần – tái sử dụng cho mọi nhóm
+  let broadcastFiles = [];
+  if (type === "message_reply" && Array.isArray(messageReply?.attachments) && messageReply.attachments.length) {
+    broadcastFiles = await materializeAttachments(messageReply.attachments);
+  }
+
+  const allThread = global.data.allThreadID || [];
+  let ok = 0, fail = 0;
+
+  // gửi lần lượt (có thể đổi sang Promise.allSettled nếu muốn chạy song song)
+  for (const toTid of allThread) {
+    const msg = buildMessage(baseBody, broadcastFiles);
     await new Promise(resolve => {
-        allThread.forEach((each) => {
-            try {
-                api.sendMessage(text, each, (err, info) => {
-                    if(err) { canNot++; }
-                    else {
-                        can++;
-                        atmDir.forEach(each => fs.unlinkSync(each))
-                        atmDir = [];
-                        global.client.handleReply.push({
-                            name: this.config.name,
-                            type: "sendnoti",
-                            messageID: info.messageID,
-                            messID: messageID,
-                            threadID
-                        })
-                        resolve();
-                    }
-                })
-            } catch(e) { console.log(e) }
-        })
-    })
-    api.sendMessage(`[ 𝗧𝗛𝗔́𝗡𝗛 𝗖𝗛𝗜̉ ] → Gửi thánh chỉ thành công ${can} nhóm, không thành công ${canNot} nhóm`, threadID);
-}
+      api.sendMessage(msg, toTid, (err, info) => {
+        if (err) { fail++; return resolve(); }
+        ok++;
+
+        // thiết lập cầu nối: nếu nhóm reply → gửi về admin thread
+        global.client.handleReply.push({
+          name: module.exports.config.name,
+          type: "fromGroup",
+          messageID: info.messageID,
+          adminThreadID: threadID,          // nơi admin chạy lệnh
+          targetThreadID: toTid,            // nhóm đích
+          replyToAdminMsgID: messageID      // để reply chồng lên tin admin (tùy nhu cầu)
+        });
+        resolve();
+      });
+    });
+  }
+
+  // dọn file sau khi broadcast xong
+  for (const p of broadcastFiles) { try { fs.unlinkSync(p) } catch {} }
+
+  api.sendMessage(`✅ Đã gửi thông báo tới ${ok} nhóm, thất bại ${fail} nhóm.`, threadID, messageID);
+};

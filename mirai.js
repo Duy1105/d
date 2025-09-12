@@ -64,15 +64,16 @@ writeFileSync(global.client.configPath + ".temp", JSON.stringify(global.config, 
 //========= Load Language =========//
 const langPath = join(__dirname, "includes", `${global.config.language || "vi"}.lang`);
 readFileSync(langPath, "utf8")
-  .split(/\r?\n|\r/).filter(l => l && !l.startsWith("#"))
+  .split(/\r?\n|\r/)
+  .filter(l => l && !l.startsWith("#"))
   .forEach(line => {
-    const [k, v] = line.split("=");
-    if (!v) return;
-    const keys = k.split(".");
-    const h = keys.shift();
-    global.language[h] ??= {};
-    global.language[h][keys.join(".") || k] = v.replace(/\\n/gi, "\n");
+    const i = line.indexOf("=");
+    if (i < 0) return;
+    const [h, ...r] = line.slice(0, i).split(".");
+    if (!global.language[h]) global.language[h] = {};
+    global.language[h][r.join(".") || line.slice(0, i)] = line.slice(i + 1).replace(/\\n/gi, "\n");
   });
+
 global.getText = (ns, key, ...repls) => {
   if (!global.language[ns]) throw `${__filename} - Không tìm thấy ngôn ngữ chính: ${ns}`;
   return repls.reduce((t, v, i) => t.replace(new RegExp(`%${i + 1}`, "g"), v), global.language[ns][key]);

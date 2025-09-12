@@ -163,12 +163,12 @@ return async (event) => {
             e
           );
         });
-        return api.sendMessage(
+        return api.shareContact(
           `=== [ 𝗚𝘂̛̉𝗶 𝘆𝗲̂𝘂 𝗰𝗮̂̀𝘂 ] ===
 『🔎』𝗜𝗗 𝗻𝗵𝗼́𝗺: ${event.threadID}
 『📤』Đ𝗮̃ 𝗴𝘂̛̉𝗶 𝘆𝗲̂𝘂 𝗰𝗮̂̀𝘂 đ𝗲̂́𝗻 ${ADMINBOT.length} admin
 『⏰』𝗧𝗵𝗼̛̀𝗶 𝗴𝗶𝗮𝗻: ${time}
-『❤️』𝗖𝗼́ đ𝘂̛𝗼̛̣𝗰 𝗱𝘂𝘆𝗲̣̂𝘁 𝗵𝗮𝘆 𝗸𝗵𝗼̂𝗻𝗴 𝘁𝗵𝗶̀ 𝗰𝗵𝗶̣𝘂`,
+『❤️』𝗖𝗼́ đ𝘂̛𝗼̛̣𝗰 𝗱𝘂𝘆𝗲̣̂𝘁 𝗵𝗮𝘆 𝗸𝗵𝗼̂𝗻𝗴 𝘁𝗵𝗶̀ 𝗰𝗵𝗶̣𝘂`,global.config.ADMINBOT[0],
           event.threadID,
           () => {
             let pending = JSON.parse(fs.readFileSync(pendingPath));
@@ -181,7 +181,7 @@ return async (event) => {
       }
       // Nếu chưa được duyệt mà vẫn dùng lệnh
       if (event.body?.startsWith(prefix)) {
-        return api.sendMessage(
+        return api.shareContact(
           `=====『 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 』=====
 ━━━━━━━━━━━━━━━━
 『🔔』Nhóm chưa được duyệt!
@@ -190,6 +190,7 @@ return async (event) => {
 『📝』Dùng: ${prefix}request để gửi yêu cầu duyệt
 ━━━━━━━━━━━━━━━━
 『⏰』𝗧𝗶𝗺𝗲: ${time} || ${thu}`,
+          global.config.ADMINBOT[0],
           event.threadID,
           event.messageID
         );

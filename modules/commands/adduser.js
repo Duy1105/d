@@ -1,42 +1,37 @@
 module.exports.config = {
   name: "adduser",
-  version: "1.0.1",
-  hasPermssion: 1,
+  version: "1.0.0",
+  hasPermssion: 0,
   credits: "D-Jukie",
+usePrefix: false,
   description: "Thêm người dùng vào nhóm bằng link hoặc uid",
-  commandCategory: "qtv",
-  usages: "+adduser <link|uid>",
+  commandCategory: "người dùng",
+  usages: "[args]",
   cooldowns: 5
 };
-
-const LINK_RE = /(facebook\.com|fb\.me|m\.facebook\.com)\//i;
-
-module.exports.run = async ({ api, event, args }) => {
-  const { threadID, messageID } = event;
-  if (!args[0])
-    return api.sendMessage("Cách dùng:\n+adduser <link facebook>\n+adduser <uid>", threadID, messageID);
-
-  const info = await api.getThreadInfo(threadID);
-  const { participantIDs = [], approvalMode = false, adminIDs = [] } = info;
-
-  let uid = args[0];
-  try {
-    if (LINK_RE.test(args[0])) {
-      uid = await api.getUID(args[0] || event.messageReply?.body);
-    }
-    uid = String(uid);
-  } catch (e) {
-    return api.sendMessage("Không lấy được UID từ link, thử lại bằng UID.", threadID, messageID);
-  }
-
-  if (participantIDs.map(String).includes(uid))
-    return api.sendMessage("Thành viên đã có trong nhóm.", threadID, messageID);
-
-  api.addUserToGroup(uid, threadID, (err) => {
-    if (err) return api.sendMessage("Không thể thêm vào nhóm.", threadID, messageID);
-    const botIsAdmin = adminIDs.some(a => String(a.id) === String(api.getCurrentUserID()));
-    if (approvalMode && !botIsAdmin)
-      return api.sendMessage("Đã thêm vào danh sách phê duyệt.", threadID, messageID);
-    return api.sendMessage("Thêm thành viên thành công.", threadID, messageID);
+module.exports.run = async function ({ api, event, args, Threads, Users }) {
+const { threadID, messageID } = event;
+const axios = require('axios')
+const link = args.join(" ")
+if(!args[0]) return api.sendMessage('Vui lòng nhập link hoặc id người dùng muốn thêm vào nhóm!', threadID, messageID);
+var { participantIDs, approvalMode, adminIDs } = await api.getThreadInfo(threadID);
+if(link.indexOf(".com/")!==-1) {
+  const res = await axios.get(`https://ffb.vn/api/tool/get-id-fb?idfb=${link}`);
+  var uidUser = res.data.id
+  api.addUserToGroup(uidUser, threadID, (err) => {
+  if (participantIDs.includes(uidUser)) return api.sendMessage(`Thành viên đã có mặt trong nhóm`, threadID, messageID);
+  if (err) return api.sendMessage(`Không thể thêm thành viên vào nhóm`, threadID, messageID);
+  else if (approvalMode && !adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage(`Đã thêm người dùng vào danh sách phê duyệt`, threadID, messageID);
+  else return api.sendMessage(`Thêm thành viên vào nhóm thành công`, threadID, messageID);
   });
-};
+  }
+else { 
+  var uidUser = args[0] 
+  api.addUserToGroup(uidUser, threadID, (err) => {
+  if (participantIDs.includes(uidUser)) return api.sendMessage(`Thành viên đã có mặt trong nhóm`, threadID, messageID);
+  if (err) return api.sendMessage(`Không thể thêm thành viên vào nhóm`, threadID, messageID);
+  else if (approvalMode && !adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage(`Đã thêm người dùng vào danh sách phê duyệt`, threadID, messageID);
+  else return api.sendMessage(`Thêm thành viên vào nhóm thành công`, threadID, messageID);
+  });
+}
+}

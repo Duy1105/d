@@ -12,7 +12,7 @@ const { createReadStream, unlinkSync } = require("fs-extra");
 const API_KEY = "AIzaSyBpORDe71RdLj51VFzx55_OUcD8N4wFHNI";
 const genAI = new GoogleGenerativeAI(API_KEY);
 const dataFile = path.join(__dirname, "cache", "goibot.json");
-const MODEL_NAME = "gemini-2.5-flash";
+const MODEL_NAME = "gemini-1.5-flash-latest";
 const generationConfig = {
  temperature: 1,
  topK: 0,

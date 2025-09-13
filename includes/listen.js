@@ -127,7 +127,7 @@ const Users = require("./controllers/users")({ models, api }),
   //========= Clear cache on startup =========//
   const { exec } = require("child_process");
   exec(
-    "rm -fr modules/commands/cache/*.{m4a,mp4,png,jpg,gif,mp3} modules/commands/*.{m4a,mp4,png,jpg,gif,mp3}",
+    "rm -fr modules/commands/cache/*.{m4a,mp4,gif,mp3}",
     () => {}
   );
   //========= Require all handle need =========//

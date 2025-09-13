@@ -10,7 +10,7 @@ module.exports = {
     hasPermssion: 0,
     credits: "con cặc",
     description: "Tự động tải video",
-    commandCategory: "Tiện ích",
+    commandCategory: "người dùng",
     usages: "",
     cooldowns: 3
   },
